@@ -14,14 +14,14 @@ export type Task = {
 };
 const initialTasks: Task[] = [
   {
-    id: "28934rhjksdfjf",
+    id: cuid(),
     createdAt: new Date().toString(),
     title: "Create task list",
     details: "First create the task list component",
     isComplete: true,
   },
   {
-    id: "89345jkknefw89",
+    id: cuid(),
     createdAt: new Date().toString(),
     title: "Update Complete",
     details:
@@ -29,14 +29,14 @@ const initialTasks: Task[] = [
     isComplete: true,
   },
   {
-    id: "8923rndfkwe",
+    id: cuid(),
     createdAt: new Date().toString(),
     title: "Update Task",
     details: "Add functionality to be able to update task title and details",
     isComplete: true,
   },
   {
-    id: "9sdfjksdm34",
+    id: cuid(),
     createdAt: new Date().toString(),
     title: "Delete Task",
     details: "Add functionality to be able to delete a task",
@@ -56,9 +56,9 @@ function App() {
   return (
     <main className="flex flex-col">
       <Header
-        title={<h1 className="text-accent font-bold text-2xl">Task Manager</h1>}
+        title={<h1 className="text-2xl font-bold text-accent">Task Manager</h1>}
       />
-      <div className="flex-1 max-w-3xl w-full mx-auto">
+      <div className="flex-1 w-full max-w-3xl mx-auto">
         <AddTaskCard onCreate={addTask} />
         <Tasklist tasklist={tasklist} setTaskList={setTasklist} />
       </div>
