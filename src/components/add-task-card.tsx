@@ -40,7 +40,7 @@ export function AddTaskCard({ onCreate }: AddTaskCardProps) {
   return (
     <Card className="m-3">
       <CardHeader>
-        <CardTitle>New task</CardTitle>
+        <CardTitle>New Task</CardTitle>
         <CardDescription>Create a new task</CardDescription>
         {errors.map((error) => (
           <span className="text-destructive">{error}</span>
@@ -69,7 +69,10 @@ export function AddTaskCard({ onCreate }: AddTaskCardProps) {
             onChange={(e) => updateNewTask(e.target.value, "details")}
           />
         </div>
-        <Button variant={"secondary"} onClick={createTask}>
+        <Button
+          className="bg-accent text-accent-foreground"
+          onClick={createTask}
+        >
           Create task
         </Button>
       </CardContent>
