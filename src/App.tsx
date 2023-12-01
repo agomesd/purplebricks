@@ -59,8 +59,9 @@ function App() {
       <Header
         title={<h1 className="text-2xl font-bold text-accent">Task Manager</h1>}
       />
-      <div className="flex-1 w-full max-w-3xl mx-auto">
+      <div className="flex flex-col flex-1 w-full max-w-3xl mx-auto">
         <AddTaskCard onCreate={addTask} />
+
         <Tasklist tasklist={tasklist} setTaskList={setTasklist} />
       </div>
       <Footer />

@@ -43,8 +43,8 @@ export function Tasklist({ tasklist, setTaskList }: TasklistProps) {
   );
 
   return (
-    <div className="p-2">
-      <Accordion type="single" collapsible>
+    <Accordion type="single" collapsible className="relative flex-1">
+      <ul className="absolute inset-0 mb-4 overflow-y-auto">
         {tasklist.map((task) => (
           <TaskItem
             key={task.id}
@@ -54,7 +54,7 @@ export function Tasklist({ tasklist, setTaskList }: TasklistProps) {
             onDelete={deleteTask}
           />
         ))}
-      </Accordion>
-    </div>
+      </ul>
+    </Accordion>
   );
 }
