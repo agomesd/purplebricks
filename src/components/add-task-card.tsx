@@ -10,7 +10,7 @@ import {
 import { Button } from "./ui/button";
 
 interface AddTaskCardProps {
-  onCreate: (task: Omit<Task, "id">) => void;
+  onCreate: (task: Omit<Task, "id" | "createdAt">) => void;
 }
 const initialTask = {
   details: "",
@@ -19,7 +19,8 @@ const initialTask = {
 };
 
 export function AddTaskCard({ onCreate }: AddTaskCardProps) {
-  const [newTask, setNewTask] = useState<Omit<Task, "id">>(initialTask);
+  const [newTask, setNewTask] =
+    useState<Omit<Task, "id" | "createdAt">>(initialTask);
   const [errors, setErrors] = useState<string[]>([]);
 
   const updateNewTask = (value: string, key: string) => {

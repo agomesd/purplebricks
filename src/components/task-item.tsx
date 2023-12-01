@@ -7,6 +7,7 @@ import {
 import { Button } from "./ui/button";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { format } from "date-fns";
 
 interface TaskItemProps {
   task: Task;
@@ -58,24 +59,31 @@ export function TaskItem({
           </div>
         </Button>
       </AccordionTrigger>
-      <AccordionContent className="p-4 relative flex justify-between items-center">
-        <input
-          disabled={!isUpdate}
-          value={task.details}
-          className="w-full disabled:text-slate-700"
-          onChange={(e) => onUpdateTask(task.id, e.target.value, "details")}
-        />
-        <div className="flex gap-2">
-          <Button variant={"destructive"} onClick={() => onDelete(task.id)}>
-            Delete
-          </Button>
-          <Button
-            variant={"secondary"}
-            onClick={() => setIsUpdate(!isUpdate)}
-            className={cn(isUpdate && "bg-emerald-400 text-accent-foreground")}
-          >
-            {isUpdate ? "Save" : "Edit"}
-          </Button>
+      <AccordionContent className="p-4 relative flex flex-col gap-2  ">
+        <span className="text-sm">
+          Created: {format(new Date(task.createdAt), "EEE do MMM yyyy, HH:mm")}
+        </span>
+        <div className="flex justify-between items-center">
+          <input
+            disabled={!isUpdate}
+            value={task.details}
+            className="w-full disabled:text-slate-700"
+            onChange={(e) => onUpdateTask(task.id, e.target.value, "details")}
+          />
+          <div className="flex gap-2">
+            <Button variant={"destructive"} onClick={() => onDelete(task.id)}>
+              Delete
+            </Button>
+            <Button
+              variant={"secondary"}
+              onClick={() => setIsUpdate(!isUpdate)}
+              className={cn(
+                isUpdate && "bg-emerald-400 text-accent-foreground"
+              )}
+            >
+              {isUpdate ? "Save" : "Edit"}
+            </Button>
+          </div>
         </div>
       </AccordionContent>
     </AccordionItem>

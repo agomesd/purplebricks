@@ -7,6 +7,7 @@ import { AddTaskCard } from "./components/add-task-card";
 
 export type Task = {
   id: string;
+  createdAt: string;
   title: string;
   details: string;
   isComplete: boolean;
@@ -14,12 +15,14 @@ export type Task = {
 const initialTasks: Task[] = [
   {
     id: "28934rhjksdfjf",
+    createdAt: new Date().toString(),
     title: "Create task list",
     details: "First create the task list component",
     isComplete: true,
   },
   {
     id: "89345jkknefw89",
+    createdAt: new Date().toString(),
     title: "Update Complete",
     details:
       "Add functionality to be able to update if a task is complete or not",
@@ -27,12 +30,14 @@ const initialTasks: Task[] = [
   },
   {
     id: "8923rndfkwe",
+    createdAt: new Date().toString(),
     title: "Update Task",
     details: "Add functionality to be able to update task title and details",
     isComplete: true,
   },
   {
     id: "9sdfjksdm34",
+    createdAt: new Date().toString(),
     title: "Delete Task",
     details: "Add functionality to be able to delete a task",
     isComplete: true,
@@ -41,8 +46,11 @@ const initialTasks: Task[] = [
 
 function App() {
   const [tasklist, setTasklist] = useState<Task[]>(initialTasks);
-  const addTask = (task: Omit<Task, "id">) => {
-    const newTaskList = [...tasklist, { ...task, id: cuid() }];
+  const addTask = (task: Omit<Task, "id" | "createdAt">) => {
+    const newTaskList = [
+      ...tasklist,
+      { ...task, id: cuid(), createdAt: new Date().toString() },
+    ];
     setTasklist(newTaskList);
   };
   return (
