@@ -6,6 +6,6 @@ interface HeaderProps {
 
 export function Header({ title }: HeaderProps) {
   return (
-    <div className="flex p-4 bg-background border-b border-border">{title}</div>
+    <div className="flex p-4 border-b bg-secondary border-border">{title}</div>
   );
 }

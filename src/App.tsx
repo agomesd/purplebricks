@@ -4,6 +4,7 @@ import { Header } from "./components/header";
 import { Tasklist } from "./components/tasklist";
 
 import { AddTaskCard } from "./components/add-task-card";
+import { Footer } from "./components/footer";
 
 export type Task = {
   id: string;
@@ -54,7 +55,7 @@ function App() {
     setTasklist(newTaskList);
   };
   return (
-    <main className="flex flex-col">
+    <main className="flex flex-col h-screen bg-background">
       <Header
         title={<h1 className="text-2xl font-bold text-accent">Task Manager</h1>}
       />
@@ -62,6 +63,7 @@ function App() {
         <AddTaskCard onCreate={addTask} />
         <Tasklist tasklist={tasklist} setTaskList={setTasklist} />
       </div>
+      <Footer />
     </main>
   );
 }
